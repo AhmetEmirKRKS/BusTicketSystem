@@ -1,0 +1,27 @@
+﻿services:
+  #1.servis: veritabanı(postgresql)
+  db:
+    image: postgres:latest
+    container_name: bus_ticket_db_container
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: Ahmet.1234
+        POSTGRES_DB: BusTicketDb
+    ports:
+        - "5433:5432"
+    
+        
+       
+   #2.Servis: Bizim API projemiz
+  api:
+    build:
+        context: .
+        dockerfile: BusTicketSystem.WebApi/Dockerfile
+    container_name: bus_ticket_api_container
+    ports:
+        - "8080:8080"
+    depends_on:
+        - db
+    environment:
+        - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=BusTicketDb;Username=postgres;Password=Ahmet.1234;
+        - ASPNETCORE_ENVIRONMENT=Development

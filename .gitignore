@@ -1,0 +1,12 @@
+# --- GÜVENLÝK (Þifreli Dosyalar) ---
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# --- GEREKSÝZ VS DOSYALARI (Hata veren yer burasý) ---
+.vs/
+.vscode/
+bin/
+obj/
+*.user
+*.suo
